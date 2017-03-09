@@ -1,0 +1,8 @@
+server:
+  port: 8081
+zuul:
+  routes:
+    resource:
+      path: /booking_calendar/
+      url: http://localhost:8080
+      sensitive-headers:

@@ -58,7 +58,7 @@ public class ControllerTest {
         ResponseEntity<BookingCalendar> response = restTemplate.exchange(url, HttpMethod.GET, entity, BookingCalendar.class);
         BookingCalendar bookingCalendar = response.getBody();
 
-        LOG.info("app.ControllerTest.test" + json.write(bookingCalendar));
+        LOG.info("app.app.ControllerTest.test" + json.write(bookingCalendar));
 
         assertThat(this.json.write(bookingCalendar)).isEqualToJson("../result.json");
     }

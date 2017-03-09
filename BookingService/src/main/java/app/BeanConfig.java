@@ -10,12 +10,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import rest.serialization.LocalDateDeserializer;
-import rest.serialization.LocalDateSerializer;
-import rest.serialization.LocalTimeDeserializer;
-import rest.serialization.LocalTimeSerializer;
+import serialization.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +28,11 @@ public class BeanConfig {
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer());
         javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer());
+        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
 
         javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer());
+        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
         objectMapper.registerModule(javaTimeModule);
         return objectMapper;
     }
